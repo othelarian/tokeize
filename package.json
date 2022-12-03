@@ -1,0 +1,17 @@
+{
+  "name": "tokeize",
+  "version": "0.1.0",
+  "description": "Interface de visualisation pour tokei et mes projets",
+  "main": "index.js",
+  "scripts": {
+    "run": "cake run"
+  },
+  "author": "othelarian",
+  "license": "MIT",
+  "devDependencies": {
+    "coffeescript": "^2.7.0",
+    "pug": "^3.0.2",
+    "sass": "^1.56.1",
+    "sharp": "^0.31.2"
+  }
+}

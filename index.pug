@@ -1,0 +1,130 @@
+- function repSpace(txt) { return txt.replace(' ', '_'); }
+doctype html
+html
+  head
+    title Tokeize
+    meta(charset='utf-8')
+    style !{css}
+    style #{colors}
+    script(type='text/javascript').
+      //<![CDATA[
+      !{js}
+      //]]>
+  body(onload='App.init()')
+    h1 Tokeize
+    #main.mainblock
+      div.menu
+        span
+        button#main-btn-projets.selected(onclick='App.show("projets")') Les projets
+        button#main-btn-global(onclick='App.show("global")') Stats globales
+        span
+      #main-global
+        table
+          tr
+            td.b Total lines:
+            td= totals[0]
+            td.b Total code:
+            td= totals[1]
+          tr
+            td.b Total comments:
+            td= totals[2]
+            td.b Total blanks:
+            td= totals[3]
+          tr
+            td.b Total files:
+            td= totals[4]
+            td.b Total projects:
+            td= totals[5]
+        .rep
+          .repart
+            each val, key in global
+              - var key = repSpace(key)
+              div(class='rep-'+key, style='width: calc('+val[0][1]+'% - 1px)')
+        table
+          tr
+            th Langage
+            th Lines
+            th Code
+            th Comments
+            th Blanks
+            th Files
+          each val, key in global
+            //
+            // TODO: rendre les langages cliquables, avec des données derrière
+            //
+            tr(class='txt-'+(repSpace(key)))
+              td= key
+              for i in [0, 1, 2, 3, 4]
+                td
+                  span= val[i][0]
+                  span.per (#{val[i][1]}%)
+      #main-projets
+        each val, key in projets
+          .projet
+            .nom(onclick='App.reach('+key+')')= val[0]
+            .details
+              each sv, sk in val[1].stats
+                div
+                  span #{sk} :&nbsp;
+                  span= sv
+            .repart
+              each lg in val[1].langs
+                - var cl = repSpace(lg)
+                div(class='rep-'+cl,style='width: calc('+val[1][lg].percent+'% - 1px)')
+    #solo.mainblock
+      each val, key in projets
+        .solo(id='solo-'+key)
+          .titre
+            span.nom= val[0]
+            button(onclick='App.gotomain()') Retour
+          table
+            //
+            // TODO: ajouter les pourcentages globaux
+            //
+            tr
+              td.b Total lines:
+              td= val[1].stats.lines
+              td.b Total code:
+              td= val[1].stats.code
+            tr
+              td.b Total comments:
+              td= val[1].stats.comments
+              td.b Total blanks:
+              td= val[1].stats.blanks
+            tr
+              td.b Total files:
+              td= val[1].stats.files
+          .rep
+            .repart
+              each lg in val[1].langs
+                - var cl = repSpace(lg)
+                div(class='rep-'+cl,style='width: calc('+val[1][lg].percent+'% - 1px)')
+          .datas
+            .panel
+              .selected(onclick='App.panel('+key+',0)') Total
+              each lg, inc in val[1].langs
+                div(onclick='App.panel('+key+','+(inc+1)+')')= lg
+            .data
+              div.selected
+                table
+                  tr
+                    th Langages
+                    th Lines
+                    th Code
+                    th Comments
+                    th Blanks
+                    th Files
+                  tr
+                  each lg in val[1].langs
+                    tr(class='txt-'+(repSpace(lg)))
+                      td= lg
+              each lg in val[1].langs
+                div
+                  div Data par lang: #{lg}
+              //
+              // TODO: ajouter les data
+              //
+              // TODO: datas de Total : les différents languages
+              //
+              // TODO: affichage des fichiers
+              //

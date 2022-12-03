@@ -1,0 +1,175 @@
+h1
+  text-align: center
+  text-decoration: underline
+
+table
+  border: solid 1px darkgray
+  border-radius: 5px
+  border-spacing: 0
+  margin: 10px auto
+
+  td
+    min-width: 40px
+    padding: 0 3px
+    padding-left: 6px
+
+    &.b
+      font-weight: bold
+
+  th
+    background: #ddd
+
+    &:first-child
+      border-top-left-radius: 5px
+    &:last-child
+      border-top-right-radius: 5px
+
+  td:first-child
+    text-align: left
+
+.datas
+  margin-top: 15px
+  display: flex
+  flex-direction: row
+  justify-content: center
+  gap: 5px
+
+  .data
+    border: solid 1px yellow
+    flex-grow: 2
+    max-width: 600px
+
+    & > div
+      display: none
+
+    & > div.selected
+      display: block
+
+  .panel
+    border-right: solid 1px black
+    width: 150px
+
+    div
+      margin: 2px auto
+      border-top: solid 1px darkgray
+      border-bottom: solid 1px darkgray
+      background: #ddd
+      cursor: pointer
+
+      &:hover
+        background: white
+
+    .selected
+      cursor: default
+      border-top-color: black
+      border-bottom-color: black
+      background: white
+
+.mainblock
+  margin: 10px auto
+  display: none
+  text-align: center
+  max-width: 900px
+
+.menu
+  margin: auto
+  width: fit-content
+  text-align: center
+  display: flex
+
+  button
+    border: solid 1px gray
+    height: 25px
+
+    &:hover
+      background: white
+
+    &.selected
+      background: white
+      border-bottom-color: white
+
+  span
+    display: inline-block
+    width: 50px
+    height: 24px
+    border-bottom: solid 1px black
+
+.repart
+  width: 100%
+  height: 6px
+  margin-top: 7px
+  padding: 0
+  display: flex
+  justify-content: space-around
+
+  div
+    height: 6px
+    background-color: #ddd
+
+.solo
+  .nom
+    display: inline-block
+    width: 300px
+    font-weight: bold
+    font-size: 24px
+
+#main-global
+  .per
+    margin-left: 2px
+    font-size: 10px
+
+  .rep
+    width: 700px
+    margin: auto
+
+#main-projets
+  margin: 10px auto
+  display: flex
+  gap: 10px
+  flex-wrap: wrap
+  justify-content: space-around
+  align-content: flex-start
+
+  .projet
+    border: solid 1px darkgray
+    border-radius: 7px
+    width: 320px
+    padding: 0
+
+    .details
+      font-size: 14px
+      display: flex
+      flex-wrap: wrap
+
+      div
+        width: 160px
+
+        span
+          display: inline-block
+
+        span:first-child
+          font-weight: bold
+          margin-right: 5px
+          border-left: solid 1px lightgray
+          width: 80px
+
+        span:last-child
+          width: 70px
+
+    .nom
+      font-weight: bold
+      text-align: center
+      font-size: 16px
+      border-bottom: solid 1px lightgray
+      padding-top: 5px
+      padding-bottom: 5px
+      cursor: pointer
+
+      &:hover
+        background: #eee
+
+    .repart
+      div:first-child
+        border-bottom-left-radius: 5px
+      div:last-child
+        border-bottom-right-radius: 5px
