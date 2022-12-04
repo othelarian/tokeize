@@ -2,6 +2,9 @@ h1
   text-align: center
   text-decoration: underline
 
+h3
+  margin: 10px
+
 table
   border: solid 1px darkgray
   border-radius: 5px
@@ -24,6 +27,10 @@ table
     &:last-child
       border-top-right-radius: 5px
 
+  tr.trclk:hover
+    background: #eee
+    cursor: pointer
+
   td:first-child
     text-align: left
 
@@ -37,7 +44,7 @@ table
   .data
     border: solid 1px yellow
     flex-grow: 2
-    max-width: 600px
+    max-width: 750px
 
     & > div
       display: none
@@ -64,6 +71,34 @@ table
       border-top-color: black
       border-bottom-color: black
       background: white
+
+.glblg
+  border: none
+
+  tr.prj
+    font-weight: bold
+    font-size: 21px
+
+    &:hover td
+      background: lightgray
+
+    td
+      border-top: solid 1px black
+      border-bottom: solid 1px black
+    td:first-child
+      border-left: solid 1px black
+      border-top-left-radius: 5px
+      border-bottom-left-radius: 5px
+    td:last-child
+      border-right: solid 1px black
+      border-top-right-radius: 5px
+      border-bottom-right-radius: 5px
+
+  tr.dtl
+    display: none
+
+    &.show
+      display: table-row
 
 .mainblock
   margin: 10px auto
@@ -94,6 +129,14 @@ table
     height: 24px
     border-bottom: solid 1px black
 
+.note
+  margin: auto 4px
+  font-size: 13px
+
+.per
+  margin-left: 2px
+  font-size: 10px
+
 .repart
   width: 100%
   height: 6px
@@ -113,11 +156,24 @@ table
     font-weight: bold
     font-size: 24px
 
-#main-global
-  .per
-    margin-left: 2px
-    font-size: 10px
+#global-data
+  div
+    display: none
+  div.selected
+    display: block
 
+  .lang
+    margin-top: 8px
+
+    .title
+      display: flex
+      gap: 10px
+      justify-content: center
+
+      table
+        margin: 0
+
+#main-global
   .rep
     width: 700px
     margin: auto

@@ -1,5 +1,10 @@
 getId = (id) -> document.getElementById id
 
+selecting = (query, id) ->
+  selec = (nd, i) ->
+    if i is id then nd.classList.add 'selected' else nd.classList.remove 'selected'
+  selec nd, i for nd, i in document.querySelectorAll query
+
 setDisplay = (id, chx) ->
   elt = getId id
   elt.style.display = chx
@@ -9,18 +14,19 @@ turnSel = (id, sel) ->
   if sel then cl.add 'selected' else cl.remove 'selected'
 
 App =
+  glb: (lg, key) ->
+    cl = document.querySelectorAll("#glb-#{lg} .dtl")[key].classList
+    if cl.contains 'show' then cl.remove 'show' else cl.add 'show'
   gotomain: ->
     setDisplay 'solo', 'none'
     setDisplay 'main', 'block'
   init: ->
     App.show 'projets'
     setDisplay 'main', 'block'
+  lang: (key) -> selecting "#global-data > div", key
   panel: (key, pan) ->
-    selec = (nd, i) ->
-      if pan is i then nd.classList.add 'selected'
-      else nd.classList.remove 'selected'
-    selec nd, i for nd, i in document.querySelectorAll "#solo-#{key} .panel > div"
-    selec nd, i for nd, i in document.querySelectorAll "#solo-#{key} .data > div"
+    selecting "#solo-#{key} .panel > div", pan
+    selecting "#solo-#{key} .data > div", pan
   reach: (key) ->
     handleSolo = (sl) ->
       sl.style.display = if sl.id is "solo-#{key}" then 'block' else 'none'
